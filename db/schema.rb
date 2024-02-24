@@ -11,14 +11,14 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2024_02_23_022928) do
-  create_table "follow_reletionships", charset: "utf8mb4", force: :cascade do |t|
+  create_table "follow_relationships", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "followee_id", null: false
     t.bigint "follower_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["followee_id", "follower_id"], name: "index_follow_reletionships_on_followee_id_and_follower_id", unique: true
-    t.index ["followee_id"], name: "index_follow_reletionships_on_followee_id"
-    t.index ["follower_id"], name: "index_follow_reletionships_on_follower_id"
+    t.index ["followee_id", "follower_id"], name: "index_follow_relationships_on_followee_id_and_follower_id", unique: true
+    t.index ["followee_id"], name: "index_follow_relationships_on_followee_id"
+    t.index ["follower_id"], name: "index_follow_relationships_on_follower_id"
   end
 
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
@@ -28,6 +28,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_23_022928) do
     t.index ["name"], name: "index_users_on_name", unique: true
   end
 
-  add_foreign_key "follow_reletionships", "users", column: "followee_id"
-  add_foreign_key "follow_reletionships", "users", column: "follower_id"
+  add_foreign_key "follow_relationships", "users", column: "followee_id"
+  add_foreign_key "follow_relationships", "users", column: "follower_id"
 end
